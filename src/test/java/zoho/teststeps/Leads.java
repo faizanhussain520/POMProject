@@ -11,10 +11,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import zoho.context.TestContext;
-import zoho.pages.CreateLeadPage;
+/*import zoho.pages.CreateLeadPage;
 import zoho.pages.LeadDescriptionPage;
 import zoho.pages.LeadsDetailPage;
-import zoho.teststeps.data.LeadData;
+import zoho.teststeps.data.LeadData;*/
 
 public class Leads {
 // One more feature

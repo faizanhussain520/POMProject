@@ -1,3 +1,27 @@
 Extent Reports:
 Extent report object is to be added in every step definition file
 Pico container injection
+
+
+Page Objects:
+zoho.pageobjects
+All page classes are kept in here
+
+zoho.managers:
+PageObjectManager contains different functions that maintains all the pages
+
+WebDriverManager class:
+1. has all functions specific to the driver
+2. Driver commands are not written in stepdefinition classes, but they are in the page classes
+
+
+TestContext:
+1. TestContext has both PageObjectManager and WebDriverManager
+2. TestContext is shared between the entire scenario
+
+
+
+
+
+
+
