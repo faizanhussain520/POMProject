@@ -14,7 +14,6 @@ public class TestContext {
 
     private PageObjectManager pageObjectManager;
 
-
     //
     public TestContext() {
         System.out.println("Constructor TestContext");
