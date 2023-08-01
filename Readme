@@ -23,6 +23,10 @@ TestContext:
 Properties file:
 1. Contains all xpaths and static content associated to the app.
 2. Properties file has to be loaded in the memory before everything starts.
+3. Initialization flow:  TestContext > PageObjectManager > WebDriverManager
+4. In WebDriverManager we will initialize properties file i.e in the constructor
+5. Properties class is an inbuilt class used for this purpose
+
 
 
 Logging inside WebDriverManager or Page classes:
@@ -41,6 +45,10 @@ Understanding the flow:
 6. It also creates Homepage class object through getPageObjectManager which is already initialized in TestContext
 7. In the PageObjectManager class, there is fucntion called getHomePage() which returns object of HomePage
 8. getHomePage() will create object of HomePage and pass the WebDriverManager object(app), and now the app object can be used inside the HomePage class to call the functions in WebDriverManager class.
+
+Implementing Grid:
+1.
+
 
 
 
