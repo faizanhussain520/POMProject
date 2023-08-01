@@ -1,7 +1,18 @@
+Understanding the flow:
+1. Before scenario even starts, the TestContext object is created.
+2. Only one TestContext object is created by picoContainer injection and that will initialize the PageObjectManager class(see constructor in TestContext)
+3. When PageObjectManager is initialized, it has a WebDriverManager which also gets initialized
+4. All webdriver commands and methods are written in the WebDriverManager and every session or every other class will need the WebDriverManager class.
+5. Back to session.java(step 1) that is first called from the the first given statement in the feature file(leads.feature), the constructor of Session class is called
+    which equates the object of context meaning creates the object of testContext.
+6. It also creates Homepage class object through getPageObjectManager which is already initialized in TestContext
+7. In the PageObjectManager class, there is fucntion called getHomePage() which returns object of HomePage
+8. getHomePage() will create object of HomePage and pass the WebDriverManager object(app), and now the app object can be used inside the HomePage class to call the functions in WebDriverManager class.
+
+
 Extent Reports:
 Extent report object is to be added in every step definition file
 Pico container injection
-
 
 Page Objects:
 zoho.pageobjects
@@ -13,7 +24,6 @@ PageObjectManager contains different functions that maintains all the pages
 WebDriverManager class:
 1. has all functions specific to the driver
 2. Driver commands are not written in stepdefinition classes, but they are in the page classes
-
 
 TestContext:
 1. TestContext has both PageObjectManager and WebDriverManager
@@ -35,16 +45,6 @@ Logging inside WebDriverManager or Page classes:
 3. In before method, the createScenario method is called which initializes test object
 4. We pass this test object to init mwthod in WebDriverManager so that we can start logging in WebDriverManager
 
-Understanding the flow:
-1. Before scenario even starts, the TestContext object is created.
-2. Only one TestContext object is created by picoContainer injection and that will initialize the PageObjectManager class(see constructor in TestContext)
-3. When PageObjectManager is initialized, it has a WebDriverManager which also gets initialized
-4. All webdriver commands and methods are written in the WebDriverManager and every session or every other class will need the WebDriverManager class.
-5. Back to session.java(step 1) that is first called from the the first given statement in the feature file(leads.feature), the constructor of Session class is called
-    which equates the object of context meaning creates the object of testContext.
-6. It also creates Homepage class object through getPageObjectManager which is already initialized in TestContext
-7. In the PageObjectManager class, there is fucntion called getHomePage() which returns object of HomePage
-8. getHomePage() will create object of HomePage and pass the WebDriverManager object(app), and now the app object can be used inside the HomePage class to call the functions in WebDriverManager class.
 
 Implementing Grid:
 1.
