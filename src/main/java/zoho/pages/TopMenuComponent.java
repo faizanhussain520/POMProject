@@ -14,7 +14,7 @@ public class TopMenuComponent {
 		if(menuOption.equals("Leads"))
 			app.click("leads_xp");
 		else if(menuOption.equals("Contacts")) {
-			
+			/* code for contacts */
 		}
 	}
 }

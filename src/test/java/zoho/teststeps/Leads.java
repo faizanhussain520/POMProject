@@ -1,8 +1,5 @@
 package zoho.teststeps;
 
-import java.util.List;
-import java.util.Map;
-
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.DataTableType;
@@ -11,10 +8,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import zoho.context.TestContext;
-/*import zoho.pages.CreateLeadPage;
+import zoho.pages.CreateLeadPage;
 import zoho.pages.LeadDescriptionPage;
 import zoho.pages.LeadsDetailPage;
-import zoho.teststeps.data.LeadData;*/
+import zoho.teststeps.data.LeadData;
+
+import java.util.List;
+import java.util.Map;
 
 public class Leads {
 // One more feature
@@ -25,28 +25,30 @@ public class Leads {
 // GIT and Jenkins connectivity
 
 
-    public TestContext context; //creating TestContext reference in all step definition files
+
+    public TestContext context;
     public LeadsDetailPage leadDetailPage;
     public CreateLeadPage createLeadPage;
     public LeadDescriptionPage leadDescriptionPage;
 
 
+
     public Leads(TestContext context) {
-        this.context = context;
-        this.leadDetailPage = context.getPageObjectManager().getleadsDetailPage();
-        this.createLeadPage = context.getPageObjectManager().getCreateLeadPage();
-        this.leadDescriptionPage = context.getPageObjectManager().getLeadDescriptionPage();
+        this.context=context;
+        this.leadDetailPage=context.getPageObjectManager().getleadsDetailPage();
+        this.createLeadPage=context.getPageObjectManager().getCreateLeadPage();
+        this.leadDescriptionPage=context.getPageObjectManager().getLeadDescriptionPage();
     }
 
     @Before
     public void before(Scenario scenario) {
         context.createScenario(scenario.getName());
-        context.log("Starting scenario " + scenario.getName());
+        context.log("Starting scenario "+ scenario.getName());
     }
 
     @After
     public void after(Scenario scenario) {
-        context.log("Ending scenario " + scenario.getName());
+        context.log("Ending scenario "+ scenario.getName());
         context.endScenario();
         context.getPageObjectManager().getWebDriverManager().quit();
         System.out.println("-------------------------------------------------");
@@ -59,16 +61,17 @@ public class Leads {
 
     @And("enter and submit lead details")
     public void submitDetails(List<LeadData> leadData) {
-        context.log("enter and submit lead details " + leadData.size());
-        context.log("enter and submit lead details " + leadData.get(0).firstName);
+        context.log("enter and submit lead details "+ leadData.size());
+        context.log("enter and submit lead details "+ leadData.get(0).firstName);
         createLeadPage.submitLeadDetails(leadData);
 
     }
 
+   //example scenario is read
     @DataTableType
     public LeadData entry(Map<String, String> entry) {
         System.out.println(entry.toString());
-        return new LeadData(entry.get("FirstName"), entry.get("LastName"), entry.get("Email"), entry.get("Company"));
+        return new LeadData(entry.get("FirstName"),entry.get("LastName"),entry.get("Email"),entry.get("Company"));
     }
 
     @Then("Lead Detail Description Page should load")
@@ -79,14 +82,16 @@ public class Leads {
     @And("I verify lead details")
     public void verifyLeadDetails() {
         context.log("I verify lead details");
-        // you
+        // TO DO: verify if lead details are present or not
+       // leadDetailPage.validateLeadPresent();
+
     }
 
     @Then("Lead {string} should {string} inside the grid")
     public void verifyLeadCreation(String leadName, String condition) {
         if (condition.equals("be present")) {
             leadDetailPage.validateLeadPresent(leadName);
-        } else {
+        }else {
             leadDetailPage.validateLeadNotPresent(leadName);
         }
 
@@ -94,14 +99,16 @@ public class Leads {
 
     @When("I select the lead {string}")
     public void selectLead(String leadName) {
-        context.log("Selecting the lead " + leadName);
+        context.log("Selecting the lead "+ leadName);
         leadDetailPage.selectLead(leadName);
     }
 
     @And("I click on delete button")
     public void deleteLead() {
-
+        //To Do
     }
+
+
 
 
 }

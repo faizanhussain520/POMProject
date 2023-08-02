@@ -200,7 +200,7 @@ public class WebDriverManager {
 
     }
 
-    public int getLeadRowNumberWithCellData(String leadName) {
+    public int getLeadRowNumberWithCellData(String leadName) { //this function returns lead row number from a WebTable in the UI. See method leadDetailPage.selectLead(leadName);
         List<WebElement> names = driver.findElements(getLocator("leadnames_css"));
         for (int i = 0; i < names.size(); i++) {
             if (leadName.equalsIgnoreCase(names.get(i).getText()))
@@ -211,6 +211,7 @@ public class WebDriverManager {
     }
 
     public void selectLeadCheckBox(int rowNum) {
+        //selects the checkbox dynamically depending on the row number associated to the Lead text found earlier in selectLead(String leadName)
         driver.findElement(By.cssSelector("lyte-exptable-tr:nth-child(" + rowNum + ") > lyte-exptable-td:nth-child(2) label")).click();
 
     }

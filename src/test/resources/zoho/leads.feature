@@ -16,14 +16,14 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-
 @Leads
 Feature: Managing Leads
-  Creating and Deleting Leads
+  Creating and Deleting  Lead
 
-  Background: Log in
+  Background: Logged In
     Given I am logged in zoho.com
     And I click on 'Leads' in Top menu
+
 
   @CreateLead
   Scenario Outline: Creation of a Lead
@@ -31,13 +31,22 @@ Feature: Managing Leads
     And enter and submit lead details
       | FirstName   | LastName   | Email   | Company   |
       | <FirstName> | <LastName> | <Email> | <Company> |
-    Then Lead Description Page should load
+    Then Lead Detail Description Page should load
     And I verify lead details
-    When I click on 'Leads' in top menu
+    When I click on 'Leads' in Top menu
     Then Lead '<LeadName>' should 'be present' inside the grid
     Examples:
       | FirstName | LastName | Email         | Company |
-      | Alex      | Jones    | xyz@gmail.com | MRF     |
+      | Syed      | Hussain    | xyz@gmail.com | MRF     |
 
 
+  @DeleteLead
+  Scenario Outline: Deletion of the lead
+    When I select the lead '<LeadName>'
+    And I click on delete button
+    Then Lead '<LeadName>' should 'not be present' inside the grid
+
+    Examples:
+      | LeadName   |
+      | Syed Hussain |
 

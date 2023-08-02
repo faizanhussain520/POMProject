@@ -1,14 +1,9 @@
 package zoho.teststeps;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import zoho.context.TestContext;
 import zoho.pages.HomePage;
 import zoho.pages.LoginPage;
-/*import io.cucumber.java.en.When;
-import zoho.context.TestContext;
-import zoho.pages.HomePage;
-import zoho.pages.LoginPage;*/
 
 public class Session {
     public TestContext context;
@@ -27,12 +22,6 @@ public class Session {
         homePage.load("Chrome");
         homePage.gotoLoginPage();
         loginPage.doLogin();
-
-    }
-
-    @And("I click on {string} in Top menu")
-    public void iClickOnLeadsInTopMenu() {
-
 
     }
 }
